@@ -90,6 +90,7 @@ textarea:not([rows]) {
 
 body {
   font-family: sans-serif;
+  background-color: hsl(0, 0%, 98%);
 }
 
 img {
@@ -102,17 +103,17 @@ header {
   padding: 1rem;
   display: flex;
   justify-content: space-between;
-  position: relative;
+  align-items: center;
 }
 
 .nav-panel {
   display: flex;
   flex-direction: column;
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   height: 100vh;
-  width: 75%;
+  width: 70%;
   background-color: hsl(0, 0%, 98%);
   z-index: 1;
   transform: translate(100%);
@@ -122,10 +123,24 @@ header {
   .nav-panel {
     display: initial;
     position: initial;
+    transform: initial;
     height: auto;
     width: auto;
     flex-direction: row;
+    flex: 1;
   }
+}
+
+.nav-overlay {
+  visibility: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.562);
+  transition: visibility 0.3s linear, opacity 0.3s linear;
 }
 
 .nav-list {
@@ -137,6 +152,7 @@ header {
 @media (min-width: 600px) {
   .nav-list {
     display: flex;
+    gap: 1rem;
   }
 }
 
@@ -148,6 +164,15 @@ header {
   display: none;
   position: absolute;
   list-style-type: none;
+}
+
+.nav-menu {
+  display: block;
+}
+@media (min-width: 600px) {
+  .nav-menu {
+    display: none;
+  }
 }
 
 .nav-close {
@@ -162,6 +187,11 @@ header {
 
 .nav-open {
   transform: translateX(0);
+}
+
+.nav-unhide {
+  visibility: visible;
+  opacity: 1;
 }
 
 .hero-section {
