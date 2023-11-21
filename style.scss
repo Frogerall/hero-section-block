@@ -76,10 +76,8 @@ textarea:not([rows]) {
 :target {
  scroll-margin-block: 5ex;
 }
-@import url("https://fonts.google.com/specimen/Epilogue");
-
 body {
- font-family: "Epilogue", sans-serif;
+ font-family: sans-serif;
 }
 img {
  max-width: 100%;
@@ -90,13 +88,56 @@ header {
  padding: 1rem;
  display: flex;
  justify-content: space-between;
+ position: relative;
+}
+.nav-panel {
+ display: flex;
+ flex-direction: column;
+ position: absolute;
+ top: 0;
+ right: 0;
+ height: 100vh;
+ width: 75%;
+ background-color: hsl(0, 0%, 98%);
+ z-index: 1;
+ transform: translate(100%);
+ transition: all 0.3s ease;
+ @media (min-width: 600px) {
+  display: initial;
+  position: initial;
+  height: auto;
+  width: auto;
+  flex-direction: row;
+ }
 }
 .nav-menu {
- display: none;
-
+}
+.nav-list {
+ list-style-type: none;
+ a {
+  text-decoration: none;
+ }
  @media (min-width: 600px) {
   display: flex;
  }
+}
+.dropdown {
+ position: relative;
+}
+.dropdown-content {
+ display: none;
+ position: absolute;
+ list-style-type: none;
+}
+.nav-close {
+ align-self: flex-end;
+ padding: 1rem;
+ @media (min-width: 600px) {
+  display: none;
+ }
+}
+.nav-open {
+ transform: translateX(0);
 }
 .hero-section {
  text-align: center;
