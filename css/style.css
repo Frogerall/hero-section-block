@@ -93,6 +93,10 @@ body {
   background-color: hsl(0, 0%, 98%);
 }
 
+p {
+  font-size: 18px;
+}
+
 img {
   max-width: 100%;
   height: auto;
@@ -104,6 +108,11 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+@media (min-width: 600px) {
+  header {
+    padding: 1rem 2rem;
+  }
 }
 
 .nav-panel {
@@ -124,6 +133,8 @@ header {
     display: initial;
     position: initial;
     transform: initial;
+    transition: initial;
+    background-color: transparent;
     height: auto;
     width: auto;
     flex-direction: row;
@@ -139,31 +150,134 @@ header {
   height: 100vh;
   width: 100%;
   opacity: 0;
-  background-color: rgba(0, 0, 0, 0.562);
+  background-color: rgba(0, 0, 0, 0.644);
   transition: visibility 0.3s linear, opacity 0.3s linear;
 }
-
-.nav-list {
-  list-style-type: none;
-}
-.nav-list a {
-  text-decoration: none;
-}
 @media (min-width: 600px) {
-  .nav-list {
-    display: flex;
-    gap: 1rem;
+  .nav-overlay {
+    display: none;
   }
 }
 
-.dropdown {
-  position: relative;
+.nav-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+@media (min-width: 600px) {
+  .nav-list {
+    flex-direction: row;
+  }
 }
 
-.dropdown-content {
-  display: none;
-  position: absolute;
+.nav-link {
   list-style-type: none;
+  color: hsl(0, 0%, 41%);
+}
+.nav-link a {
+  text-decoration: none;
+}
+@media (min-width: 600px) {
+  .nav-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3rem;
+  }
+}
+
+@media (min-width: 600px) {
+  .dropdown-1,
+  .dropdown-2 {
+    position: relative;
+  }
+}
+
+.dropdown-content-1,
+.dropdown-content-2 {
+  padding: 0.5rem 1.5rem 1.5rem 1.5rem;
+  display: block;
+  list-style-type: none;
+  opacity: 0;
+  transition: opacity 0.15s ease-in-out;
+}
+.dropdown-content-1 li,
+.dropdown-content-2 li {
+  margin-top: 0.5rem;
+}
+.dropdown-content-1 li img,
+.dropdown-content-2 li img {
+  display: inline-block;
+  margin-right: 1rem;
+}
+
+.dropdown-content-1, .dropdown-content-2 {
+  display: none;
+}
+@media (min-width: 600px) {
+  .dropdown-content-1, .dropdown-content-2 {
+    display: block;
+    visibility: hidden;
+    position: absolute;
+    top: 2.5rem;
+    left: -5rem;
+    border-radius: 5px;
+    background-color: hsl(0, 0%, 98%);
+    box-shadow: 1px 1px 30px 20px rgba(0, 0, 0, 0.055);
+  }
+}
+
+.dropdown-content-2 {
+  left: -1rem;
+}
+@media (min-width: 600px) {
+  .dropdown-content-2 {
+    width: 145%;
+  }
+}
+
+.nav-span a {
+  display: inline;
+  margin-right: 0.5rem;
+}
+.nav-span img {
+  display: inline;
+}
+
+.nav-button {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1.5rem;
+  color: hsl(0, 0%, 41%);
+}
+.nav-button .login-btn {
+  border: none;
+  background-color: transparent;
+  font-weight: 500;
+  cursor: pointer;
+}
+.nav-button .login-btn:active {
+  font-weight: bold;
+}
+.nav-button .register-btn {
+  border: none;
+  color: hsl(0, 0%, 98%);
+  padding: 10px 25px;
+  border-radius: 0.8rem;
+  background-color: hsl(0, 0%, 8%);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.nav-button .register-btn:active {
+  background-color: transparent;
+  color: hsl(0, 0%, 8%);
+  border: 1px solid hsl(0, 0%, 8%);
+}
+@media (min-width: 600px) {
+  .nav-button {
+    flex-direction: row;
+  }
 }
 
 .nav-menu {
@@ -194,19 +308,24 @@ header {
   opacity: 1;
 }
 
+.nav-rotate {
+  transform: rotate(180deg);
+}
+
 .hero-section {
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin-top: 1rem;
 }
 @media (min-width: 600px) {
   .hero-section {
     text-align: left;
     display: flex;
     flex-direction: row-reverse;
-    max-width: 83%;
-    margin: 5rem auto;
+    max-width: 80%;
+    margin: 3rem auto;
     gap: 5rem;
   }
 }
@@ -240,6 +359,9 @@ header {
   }
 }
 
+.hero-intro {
+  margin-top: 0.5rem;
+}
 .hero-intro h1 {
   font-size: 2rem;
   color: hsl(0, 0%, 8%);
@@ -252,13 +374,20 @@ header {
   color: hsl(0, 0%, 41%);
 }
 .hero-intro .hero-button {
-  padding: 8px 24px;
+  padding: 10px 24px;
   border-radius: 8px;
   background-color: hsl(0, 0%, 8%);
   color: hsl(0, 0%, 98%);
   border: none;
   font-weight: 700;
   margin-top: 1.5rem;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+.hero-intro .hero-button:active {
+  background-color: transparent;
+  border: 1px solid hsl(0, 0%, 8%);
+  color: hsl(0, 0%, 8%);
 }
 @media (min-width: 600px) {
   .hero-intro h1 {

@@ -83,6 +83,9 @@ body {
  font-family: sans-serif;
  background-color: hsl(0, 0%, 98%);
 }
+p {
+ font-size: 18px;
+}
 img {
  max-width: 100%;
  height: auto;
@@ -96,6 +99,9 @@ header {
  display: flex;
  justify-content: space-between;
  align-items: center;
+ @media (min-width: 600px) {
+  padding: 1rem 2rem;
+ }
 }
 .nav-panel {
  display: flex;
@@ -113,6 +119,8 @@ header {
   display: initial;
   position: initial;
   transform: initial;
+  transition: initial;
+  background-color: transparent;
   height: auto;
   width: auto;
   flex-direction: row;
@@ -127,26 +135,117 @@ header {
  height: 100vh;
  width: 100%;
  opacity: 0;
- background-color: rgba(0, 0, 0, 0.562);
+ background-color: rgba(0, 0, 0, 0.644);
  transition: visibility 0.3s linear, opacity 0.3s linear;
+ @media (min-width: 600px) {
+  display: none;
+ }
 }
 .nav-list {
+ display: flex;
+ flex-direction: column;
+ justify-content: space-between;
+ @media (min-width: 600px) {
+  flex-direction: row;
+ }
+}
+.nav-link {
  list-style-type: none;
+ color: hsl(0, 0%, 41%);
  a {
   text-decoration: none;
  }
  @media (min-width: 600px) {
   display: flex;
-  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3rem;
  }
 }
-.dropdown {
- position: relative;
+.dropdown-1,
+.dropdown-2 {
+ @media (min-width: 600px) {
+  position: relative;
+ }
 }
-.dropdown-content {
- display: none;
- position: absolute;
+.dropdown-content-1,
+.dropdown-content-2 {
+ padding: 0.5rem 1.5rem 1.5rem 1.5rem;
+ display: block;
  list-style-type: none;
+ opacity: 0;
+ transition: opacity 0.15s ease-in-out;
+ li {
+  margin-top: 0.5rem;
+  img {
+   display: inline-block;
+   margin-right: 1rem;
+  }
+ }
+}
+.dropdown-content-1 {
+ display: none;
+ @media (min-width: 600px) {
+  display: block;
+  visibility: hidden;
+  position: absolute;
+  top: 2.5rem;
+  left: -5rem;
+  border-radius: 5px;
+  background-color: hsl(0, 0%, 98%);
+  box-shadow: 1px 1px 30px 20px rgba(0, 0, 0, 0.055);
+ }
+}
+.dropdown-content-2 {
+ @extend .dropdown-content-1;
+ left: -1rem;
+ @media (min-width: 600px) {
+  width: 145%;
+ }
+}
+.nav-span {
+ a {
+  display: inline;
+  margin-right: 0.5rem;
+ }
+ img {
+  display: inline;
+ }
+}
+.nav-button {
+ display: flex;
+ flex-direction: column;
+ gap: 1rem;
+ margin: 1.5rem;
+ color: hsl(0, 0%, 41%);
+
+ .login-btn {
+  border: none;
+  background-color: transparent;
+  font-weight: 500;
+  cursor: pointer;
+  &:active {
+   font-weight: bold;
+  }
+ }
+ .register-btn {
+  border: none;
+  color: hsl(0, 0%, 98%);
+  padding: 10px 25px;
+  border-radius: 0.8rem;
+  background-color: hsl(0, 0%, 8%);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:active {
+   background-color: transparent;
+   color: hsl(0, 0%, 8%);
+   border: 1px solid hsl(0, 0%, 8%);
+  }
+ }
+ @media (min-width: 600px) {
+  flex-direction: row;
+ }
 }
 .nav-menu {
  display: block;
@@ -168,6 +267,10 @@ header {
  visibility: visible;
  opacity: 1;
 }
+.nav-rotate {
+ transform: rotate(180deg);
+}
+
 // Hero Section
 
 .hero-section {
@@ -175,12 +278,13 @@ header {
  display: flex;
  flex-direction: column;
  justify-content: space-between;
+ margin-top: 1rem;
  @media (min-width: 600px) {
   text-align: left;
   display: flex;
   flex-direction: row-reverse;
-  max-width: 83%;
-  margin: 5rem auto;
+  max-width: 80%;
+  margin: 3rem auto;
   gap: 5rem;
  }
 }
@@ -205,6 +309,7 @@ header {
  }
 }
 .hero-intro {
+ margin-top: 0.5rem;
  h1 {
   font-size: 2rem;
   color: hsl(0, 0%, 8%);
@@ -217,13 +322,20 @@ header {
   color: hsl(0, 0%, 41%);
  }
  .hero-button {
-  padding: 8px 24px;
+  padding: 10px 24px;
   border-radius: 8px;
   background-color: hsl(0, 0%, 8%);
   color: hsl(0, 0%, 98%);
   border: none;
   font-weight: 700;
   margin-top: 1.5rem;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  &:active {
+   background-color: transparent;
+   border: 1px solid hsl(0, 0%, 8%);
+   color: hsl(0, 0%, 8%);
+  }
  }
  @media (min-width: 600px) {
   h1 {
